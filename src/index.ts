@@ -3,7 +3,7 @@ dotenv.config();
 import express, { Request, Response } from "express";
 
 import connectDB from "./db";
-import chapterRouter from '../src/route/chapter.route.ts'
+import chapterRouter from '../src/route/chapter.route'
 import { loadData } from "./utils/load";
 
 const app = express();

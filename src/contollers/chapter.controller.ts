@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { chapterModel } from "../model/chapter.model.ts";
+import { chapterModel } from "../model/chapter.model";
 import { redisClient } from "../utils/redisClient";
 import mongoose from "mongoose";
 interface GetChapterResponseQueryParams {
