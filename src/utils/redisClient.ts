@@ -1,7 +1,10 @@
 // redisClient.ts
 import { createClient } from "redis";
-
-const redisClient = createClient();
+const RedisUrl = process.env.REDIS_URL;
+console.log(RedisUrl)
+const redisClient = createClient({
+  url:RedisUrl
+});
 
 redisClient.on("error", (err) => console.error("Redis Client Error", err));
 

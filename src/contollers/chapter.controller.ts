@@ -67,7 +67,7 @@ export const getAllChapters = async (
     };
 
     await redisClient.setEx(redisKey, 3600, JSON.stringify(response));
-
+await redisClient.sAdd("chapters:cacheKeys", redisKey);
     return res.status(200).json(response);
   } catch (error) {
     console.error("Error fetching chapters:", error);
@@ -166,7 +166,8 @@ export const postChapters = async (
       const keys = await redisClient.keys("chapters:*");
       if (keys.length > 0) {
         await redisClient.del(keys);
-        console.log("🔁 Chapter cache invalidated");
+        await redisClient.del("chapters:cacheKeys"); 
+        console.log("✅ Chapter cache invalidated in Upstash");
       }
     }
 
