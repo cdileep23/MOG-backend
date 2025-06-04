@@ -34,11 +34,11 @@ const ChapterSchema: Schema<IChapter> = new Schema({
   class: { type: String, required: true },
   unit: { type: String, required: true },
   yearWiseQuestionCount:{ type: yearWiseQuestionCountSchema, required: true },
-  questionSolved: { type: Number, default: 0 },
+  questionSolved: { type: Number, required:true},
   status: {
     type: String,
     enum: ["Not Started", "In Progress", "Completed"],
-    default: "Not Started",
+   required:true
   },
   isWeakChapter: { type: Boolean, default: false },
 });
