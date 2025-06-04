@@ -3,15 +3,16 @@ dotenv.config();
 import express, { Request, Response } from "express";
 
 import connectDB from "./db";
-import chapterRouter from '../src/route/chapter.route'
+
 import { loadData } from "./utils/load";
 import { limiter } from "./utils/rateLimit";
+import { router } from "./route/chapter.route";
 
 const app = express();
 
 app.use(express.json());
 app.use(limiter)
-app.use("/api/v1/chapters", chapterRouter);
+app.use("/api/v1/chapters", router);
 app.get("/", (req: Request, response: Response) => {
   response.send("Hello from MathonGo Backend");
 });
